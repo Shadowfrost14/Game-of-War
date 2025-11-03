@@ -43,12 +43,48 @@ namespace GameOfWar
         {
             return c1.Rank < c2.Rank;
         }
-
-        // Create a public string method RankString that returns a string representation of this card's rank, 2-10 and Jack, Queen, King, Ace
-        public string RankString()
+        
+        // Extra Overload the == and != operator to compare two cards by rank
+        public static bool operator ==(Card c1, Card c2)
         {
-            return $"{this.Rank} of {this.Suit}";
+            return c1.Rank == c2.Rank;
+        }
+        
+        public static bool operator !=(Card c1, Card c2)
+        {
+            return c1.Rank != c2.Rank;
         }
 
+    // Create a public string method RankString that returns a string representation of this card's rank, 2-10 and Jack, Queen, King, Ace
+        public string RankString()
+        {
+        if (Rank == 1)
+        {
+            return "Ace";
+        }
+        else if (Rank == 11)
+        {
+            return "Jack";
+        }
+        else if (Rank == 12)
+        {
+            return "Queen";
+        }
+        else if (Rank == 13)
+        {
+            return "King";
+        }
+        else
+        {
+            return $"{this.Rank}";
+        }
     }
+
+    // This is a is extra function for troubleshooting.
+    public override string ToString()
+    {
+        return $"{this.RankString()} of {Suit}";
+    }
+
+}
 }
